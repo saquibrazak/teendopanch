@@ -1,6 +1,6 @@
 
 
-EECS 280 Project 3: TeenDoPanch
+EECS 280: TeenDoPanch
 ==========================
 
 
@@ -26,7 +26,7 @@ A takes the trick
 
 
 ## Setup
-Use this starter files link: `https://eecs280staff.github.io/euchre/starter-files.tar.gz`
+Use the files from the following git repo: `https://github.com/saquibrazak/teendopanch/tree/main/starter-files`
 
 
 Create a new file `teendopanch.cpp`.  You should end up with a folder with starter files that looks like this. 
@@ -244,13 +244,13 @@ $ make Card_public_tests.exe
 $ ./Card_public_tests.exe
 ```
 
-Write tests for `Card` in `Card_tests.cpp` using the [Unit Test Framework](https://eecs280staff.github.io/unit_test_framework/).  You'll submit these tests to the autograder.  See the [Unit Test Grading](#unit-test-grading) section.
+Write tests for `Card` in `Card_tests.cpp` using the [Unit Test Framework](https://eecs280staff.github.io/unit_test_framework/). See the [Unit Test Grading](#unit-test-grading) section.
 ```console
 $ make Card_tests.exe
 $ ./Card_tests.exe
 ```
 
-Submit `Card.cpp` and `Card_tests.cpp` to the [autograder](https://autograder.io).
+
 
 
 ### Setup
@@ -318,7 +318,7 @@ $ make Pack_tests.exe
 $ ./Pack_tests.exe
 ```
 
-Submit `Pack.cpp` to the [autograder](https://autograder.io).  Don't forget to include the code you finished earlier, `Card.cpp` and `Card_tests.cpp`.
+
 
 ### Default constructor
 
@@ -451,13 +451,12 @@ $ make Player_public_tests.exe
 $ ./Player_public_tests.exe
 ```
 
-Write tests for the Simple Player in `Player_tests.cpp` using the [Unit Test Framework](https://eecs280staff.github.io/unit_test_framework/).  You'll submit these tests to the autograder.  See the [Unit Test Grading](#unit-test-grading) section.
+Write tests for the Simple Player in `Player_tests.cpp` using the [Unit Test Framework](https://eecs280staff.github.io/unit_test_framework/).  See the [Unit Test Grading](#unit-test-grading) section.
 ```console
 $ make Player_tests.exe
 $ ./Player_tests.exe
 ```
 
-Submit `Player.cpp` and `Player_tests.cpp` to the [autograder](https://autograder.io).  Don't forget to include the code you finished earlier, `Card.cpp`, `Card_tests.cpp`, and `Pack.cpp`.
 
 #### Making
 
@@ -514,7 +513,7 @@ Implement the Human Player in `Player.cpp` by creating a class that derives from
 
 The tests in `Player_tests.cpp` and `Player_public_tests.cpp` test only the Simple Player.  You'll have to wait until you have a working  game driver to test the Human player.
 
-Submit `Player.cpp` again to the [autograder](https://autograder.io).  Don't forget to include the code you finished earlier, `Card.cpp`, `Card_tests.cpp`, `Pack.cpp`, and `Player_tests.cpp`.
+
 
 #### Making Trump
 When making trump reaches a Human Player, first print the Player's
