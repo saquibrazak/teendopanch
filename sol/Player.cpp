@@ -56,6 +56,11 @@ class Simple : public Player {
   //  project spec.  The card is removed from the player's hand.
   virtual Card play_card(const Card &led_card, Suit trump);
 
+  void print_hand() const {
+    for (int i=0; i < int(hand.size()); ++i)
+      cout << "Simple player " << name << "'s hand: "
+           << "[" << i << "] " << hand[i] << "\n";
+  }
  private:
   const std::string name; // This Player's name
   std::vector<Card> hand; // Cards in this Player's hand
@@ -266,7 +271,7 @@ class Human : public Player {
     std::sort(hand.begin(), hand.end());
   }
 
-private:
+
   void print_hand() const {
     for (int i=0; i < int(hand.size()); ++i)
       cout << "Human player " << name << "'s hand: "
