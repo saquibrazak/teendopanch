@@ -1,0 +1,301 @@
+./teendopanch.exe pack.in shuffle 10 A Simple B Simple C Simple 
+Hand 1
+A deals 5 cards
+B orders up Spades
+A deals 3 cards
+A deals 2 cards
+Queen of Diamonds led by B
+King of Diamonds played by C
+Ace of Diamonds played by A
+A takes the trick
+
+Ace of Clubs led by A
+Queen of Clubs played by B
+King of Clubs played by C
+A takes the trick
+
+Ace of Hearts led by A
+Jack of Hearts played by B
+King of Hearts played by C
+A takes the trick
+
+Jack of Diamonds led by A
+Nine of Diamonds played by B
+Ten of Diamonds played by C
+A takes the trick
+
+Jack of Clubs led by A
+Eight of Clubs played by B
+Nine of Clubs played by C
+A takes the trick
+
+Ten of Clubs led by A
+Eight of Hearts played by B
+Ten of Hearts played by C
+A takes the trick
+
+Eight of Diamonds led by A
+Nine of Hearts played by B
+Queen of Hearts played by C
+A takes the trick
+
+Seven of Hearts led by A
+Seven of Spades played by B
+Eight of Spades played by C
+C takes the trick
+
+Ace of Spades led by C
+Queen of Spades played by A
+King of Spades played by B
+C takes the trick
+
+Jack of Spades led by C
+Nine of Spades played by A
+Ten of Spades played by B
+C takes the trick
+
+A has 7 tricks
+B has 0 tricks
+C has 3 tricks
+
+Hand 2
+B deals 5 cards
+C orders up Spades
+B deals 3 cards
+B deals 2 cards
+Jack of Clubs led by C
+King of Clubs played by A
+Ace of Clubs played by B
+B takes the trick
+
+Ace of Diamonds led by B
+Ten of Diamonds played by C
+King of Diamonds played by A
+B takes the trick
+
+Ace of Hearts led by B
+Jack of Hearts played by C
+King of Hearts played by A
+B takes the trick
+
+Ten of Hearts led by B
+Eight of Hearts played by C
+Queen of Hearts played by A
+A takes the trick
+
+Queen of Diamonds led by A
+Eight of Diamonds played by B
+Nine of Diamonds played by C
+A takes the trick
+
+Queen of Clubs led by A
+Eight of Clubs played by B
+Ten of Clubs played by C
+A takes the trick
+
+Jack of Diamonds led by A
+Seven of Hearts played by B
+Nine of Clubs played by C
+A takes the trick
+
+Ace of Spades led by A
+Queen of Spades played by B
+King of Spades played by C
+A takes the trick
+
+Ten of Spades led by A
+Jack of Spades played by B
+Eight of Spades played by C
+B takes the trick
+
+Nine of Hearts led by B
+Seven of Spades played by C
+Nine of Spades played by A
+A takes the trick
+
+A has 6 tricks
+B has 4 tricks
+C has 0 tricks
+
+Hand 3
+C deals 5 cards
+A orders up Spades
+C deals 3 cards
+C deals 2 cards
+King of Clubs led by A
+Queen of Clubs played by B
+Ace of Clubs played by C
+C takes the trick
+
+Ace of Hearts led by C
+King of Hearts played by A
+Nine of Hearts played by B
+C takes the trick
+
+King of Diamonds led by C
+Queen of Diamonds played by A
+Ace of Diamonds played by B
+B takes the trick
+
+Jack of Diamonds led by B
+Ten of Diamonds played by C
+Nine of Diamonds played by A
+B takes the trick
+
+Ten of Clubs led by B
+Jack of Clubs played by C
+Nine of Clubs played by A
+C takes the trick
+
+Ten of Hearts led by C
+Queen of Hearts played by A
+Eight of Hearts played by B
+A takes the trick
+
+Jack of Hearts led by A
+Seven of Hearts played by B
+Eight of Clubs played by C
+A takes the trick
+
+King of Spades led by A
+Ten of Spades played by B
+Ace of Spades played by C
+C takes the trick
+
+Queen of Spades led by C
+Jack of Spades played by A
+Seven of Spades played by B
+C takes the trick
+
+Nine of Spades led by C
+Eight of Spades played by A
+Eight of Diamonds played by B
+C takes the trick
+
+A has 2 tricks
+B has 2 tricks
+C has 6 tricks
+
+Hand 4
+A deals 5 cards
+B orders up Spades
+A deals 3 cards
+A deals 2 cards
+King of Hearts led by B
+Nine of Hearts played by C
+Ace of Hearts played by A
+A takes the trick
+
+King of Diamonds led by A
+Queen of Diamonds played by B
+Ace of Diamonds played by C
+C takes the trick
+
+Ace of Clubs led by C
+King of Clubs played by A
+Queen of Clubs played by B
+C takes the trick
+
+Jack of Diamonds led by C
+Eight of Diamonds played by A
+Ten of Diamonds played by B
+C takes the trick
+
+Jack of Clubs led by C
+Eight of Clubs played by A
+Nine of Clubs played by B
+C takes the trick
+
+Ten of Clubs led by C
+Seven of Hearts played by A
+Eight of Hearts played by B
+C takes the trick
+
+Nine of Diamonds led by C
+Ten of Hearts played by A
+Jack of Hearts played by B
+C takes the trick
+
+King of Spades led by C
+Jack of Spades played by A
+Ace of Spades played by B
+B takes the trick
+
+Ten of Spades led by B
+Queen of Spades played by C
+Nine of Spades played by A
+C takes the trick
+
+Seven of Spades led by C
+Queen of Hearts played by A
+Eight of Spades played by B
+B takes the trick
+
+A has 1 tricks
+B has 2 tricks
+C has 7 tricks
+
+Hand 5
+B deals 5 cards
+C passes
+B deals 3 cards
+C orders up Clubs
+B deals 2 cards
+Ace of Diamonds led by C
+Ten of Diamonds played by A
+Jack of Diamonds played by B
+C takes the trick
+
+King of Diamonds led by C
+Seven of Spades played by A
+Eight of Diamonds played by B
+C takes the trick
+
+King of Hearts led by C
+Ace of Hearts played by A
+Queen of Hearts played by B
+A takes the trick
+
+King of Spades led by A
+Ace of Spades played by B
+Ten of Spades played by C
+B takes the trick
+
+Queen of Spades led by B
+Eight of Hearts played by C
+Jack of Spades played by A
+B takes the trick
+
+Ten of Hearts led by B
+Nine of Diamonds played by C
+Jack of Hearts played by A
+A takes the trick
+
+Nine of Hearts led by A
+Seven of Hearts played by B
+Queen of Diamonds played by C
+A takes the trick
+
+Eight of Spades led by A
+Nine of Spades played by B
+Nine of Clubs played by C
+C takes the trick
+
+King of Clubs led by C
+Ace of Clubs played by A
+Queen of Clubs played by B
+A takes the trick
+
+Jack of Clubs led by A
+Eight of Clubs played by B
+Ten of Clubs played by C
+A takes the trick
+
+A has 5 tricks
+B has 2 tricks
+C has 3 tricks
+
+Game over
+A has 10 points
+B has 1 points
+C has 8 points
