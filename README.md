@@ -1,7 +1,4 @@
----
-layout: spec
-mermaid: true
----
+
 
 EECS 280 Project 3: TeenDoPanch
 ==========================
@@ -14,21 +11,16 @@ The learning goals of this project include Abstract Data Types in C++, Derived C
 
 When you're done, you'll have a program that simulates a game of Teen Do Panch, supporting a AI player and a Human player.
 ```console
-$ ./teendopanch.exe pack.in noshuffle 3 Ivan Human Judea Simple Kunle Simple 
-Hand 0
-Ivan deals
-Jack of Diamonds turned up
-Judea passes
-Kunle passes
-Liskov passes
-Human player Ivan's hand: [0] Nine of Diamonds
-Human player Ivan's hand: [1] Ten of Diamonds
-Human player Ivan's hand: [2] Jack of Hearts
-Human player Ivan's hand: [3] Queen of Hearts
-Human player Ivan's hand: [4] Ace of Clubs
-Human player Ivan, please enter a suit, or "pass":
-Diamonds
-Ivan orders up Diamonds
+$ ./teendopanch.exe pack.in shuffle 10 A Simple B Simple C Simple
+Hand 1
+A deals 5 cards
+B orders up Spades
+A deals 3 cards
+A deals 2 cards
+Queen of Diamonds led by B
+King of Diamonds played by C
+Ace of Diamonds played by A
+A takes the trick
 ...
 ```
 
@@ -40,12 +32,12 @@ Use this starter files link: `https://eecs280staff.github.io/euchre/starter-file
 Create a new file `teendopanch.cpp`.  You should end up with a folder with starter files that looks like this. 
 ```console
 $ ls
-Card.cpp.starter        Pack_public_tests.cpp     euchre_test00.out.correct
-Card.hpp                Pack_tests.cpp.starter    euchre_test01.out.correct
-Card_public_tests.cpp   Player.hpp                euchre_test50.in
-Card_tests.cpp.starter  Player_public_tests.cpp   euchre_test50.out.correct
-Makefile                Player_tests.cpp.starter  pack.in
-Pack.hpp                euchre.cpp                unit_test_framework.hpp
+Card.cpp.starter        Pack_public_tests.cpp          correct_output.out
+Card.hpp                Pack_tests.cpp.starter    
+Card_public_tests.cpp   Player.hpp                
+Card_tests.cpp.starter  Player_public_tests.cpp   
+Makefile                Player_tests.cpp.starter       pack.in
+Pack.hpp                teendopanch.cpp                unit_test_framework.hpp
 ```
 
 Here's a short description of each starter file.
@@ -80,9 +72,9 @@ feasible as a coding project.
 There are three players numbered 0-2. 
 
 ### The Cards
-{:.primer-spec-toc-ignore}
 
-Euchre uses a deck of 24 *playing cards*, each of which has two
+
+This game uses a deck of 24 *playing cards*, each of which has two
 properties: a *rank* and a *suit*. The ranks are 7, 8, 9, 10, *Jack*,
 *Queen*, *King*, and *Ace*, and the suits are *Spades*, *Hearts*,
 *Clubs*, and *Diamonds*. Since we use 30 cards, the 7 rank is used only from *Spades* and *Hearts* suits. Each card is unique &mdash; there are no duplicates.
@@ -196,9 +188,9 @@ However, in the first deal of a session—or in any deal where all players exact
 
 From the second deal on, the card-pulling rule applies:
 
-*A player who exceeded their quota may take one card for each trick they won above quota.
+* A player who exceeded their quota may take one card for each trick they won above quota.
 
-*Conversely, a player who fell short must give up one card for each trick they missed.
+* Conversely, a player who fell short must give up one card for each trick they missed.
 
 In a real-life game, the under-quota player holds out their 10 cards face down, and the over-quota player blindly picks one. The card is kept hidden from the third player. The over-quota player then selects one card from their hand to return—also face down—to the under-quota player.
 
@@ -206,15 +198,15 @@ In our project, instead of picking a random card, we’ll simplify this step: th
 
 Card exchange rules:
 
-*The over-quota player cannot return the same card they just took.
+* The over-quota player cannot return the same card they just took.
 
-*The returned card must come from a suit in which the over-quota player holds at least three cards (i.e., they must retain at least two cards in that suit after returning one).
+* The returned card must come from a suit in which the over-quota player holds at least three cards (i.e., they must retain at least two cards in that suit after returning one).
 
 This process continues until:
 
-**Each over-quota player has stolen one card for every extra trick, and
+* Each over-quota player has stolen one card for every extra trick, and
 
-Each under-quota player has lost one card for every missed trick.
+* Each under-quota player has lost one card for every missed trick.
 
 If multiple players are over quota, the one with the lowest player number steals first. Similarly, when choosing which under-quota player to steal from, the over-quota player starts with the player with the lowest number.
 
@@ -343,7 +335,7 @@ for (int s = SPADES; s <= DIAMONDS; ++s) {
 ```
 
 ### Stream input constructor
-{: .primer-spec-toc-ignore }
+
 
 A second `Pack` constructor reads a pack from stream input. [Later](#command-line-arguments), your `main` function will open an input file and then call this constructor on the input stream.
 ### Setup
@@ -374,7 +366,6 @@ One of the `Pack` constructors reads a pack from stream input. [Later](#interfac
 ```c++
 Pack(std::istream& pack_input);
 ```
-{: data-title="Pack.hpp" }
 
 The `pack.in` file provided with the project contains an example of the input format, with cards listed in "new pack" order:
 
@@ -387,7 +378,7 @@ Queen of Diamonds
 King of Diamonds
 Ace of Diamonds
 ```
-{: data-title="pack.in" data-variant="no-line-numbers" }
+
 
 Your implementation may assume any pack input is formatted correctly, with exactly 24
 unique and correctly formatted cards.
@@ -444,7 +435,6 @@ Player * Player_factory(const std::string &name,
   return nullptr;
 }
 ```
-{: data-title="Player.cpp" }
 
 ### Simple Player
 
@@ -522,7 +512,7 @@ exact output for a game with a human player.
 
 Implement the Human Player in `Player.cpp` by creating a class that derives from our `Player` abstract base class.  Override each Player function in `Player.cpp` for the functions declared in `Player.hpp`. 
 
-The tests in `Player_tests.cpp` and `Player_public_tests.cpp` test only the Simple Player.  You'll have to wait until you have a working Euchre game driver to test the Human player.
+The tests in `Player_tests.cpp` and `Player_public_tests.cpp` test only the Simple Player.  You'll have to wait until you have a working  game driver to test the Human player.
 
 Submit `Player.cpp` again to the [autograder](https://autograder.io).  Don't forget to include the code you finished earlier, `Card.cpp`, `Card_tests.cpp`, `Pack.cpp`, and `Player_tests.cpp`.
 
@@ -556,11 +546,11 @@ cout << "Human player " << name << ", please select a card:\n";
 
 ## Teen Do Panch Game
 
-Write the Euchre Game in `teendopanch.cpp` following the [EECS 280 Euchre Rules](#eecs-280-euchre-rules).
+Write the Game in `teendopanch.cpp` following the [EECS 280 Rules](#eecs-280-euchre-rules).
 
 Run the game with three players.
 ```console
-$ make euchre.exe
+$ make teendopanch.exe
 $ ./teendopanch.exe pack.in noshuffle 1 Adi Simple Barbara Simple Chi-Chih Simple 
 ```
 
@@ -573,7 +563,7 @@ $ ./teendopanch.exe pack.in noshuffle 1 Adi Simple Barbara Simple Chi-Chih Simpl
 
 ### Interface
 
-The Euchre game driver takes several command line arguments, for example:
+The game driver takes several command line arguments, for example:
 
 ```console
 $ ./teendopanch.exe pack.in noshuffle 1 Adi Simple Barbara Simple Chi-Chih Simple 
@@ -603,7 +593,7 @@ Check for each of these errors:
 If there is an error print this message and no other output.  Exit returning a non-zero value from `main`.
 
 ```c++
-cout << "Usage: euchre.exe PACK_FILENAME [shuffle|noshuffle] "
+cout << "Usage: teendopanch.exe PACK_FILENAME [shuffle|noshuffle] "
      << "POINTS_TO_WIN NAME1 TYPE1 NAME2 TYPE2 NAME3 TYPE3 "
      << "NAME4 TYPE4" << endl;
 ```
@@ -616,13 +606,12 @@ print this error message and exit returning a non-zero value from `main`.
 // the specified pack filename from argv
 cout << "Error opening " << pack_filename << endl;
 ```
-{: data-variant="no-line-numbers" }
 
 If the file opens successfully, you may assume it is formatted correctly.
 
 ### Design
 
-The Euchre game driver coordinates all the [actions in the game](#playing-the-game).  *Take some time* to design this complex piece of code before beginning.
+The  game driver coordinates all the [actions in the game](#playing-the-game).  *Take some time* to design this complex piece of code before beginning.
 
 We recommend writing a `Game` ADT. It should have a constructor that takes in details like the players, points to win, etc. and a public `play()` function.  The `Game` and its helper functions do the hard work, and the `main()` function is simple.
 
