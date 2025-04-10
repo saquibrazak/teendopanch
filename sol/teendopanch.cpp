@@ -72,7 +72,7 @@
  ////////////////////////////////////////////////////////////////////////////////
  int main(int argc, char **argv) {
  
-   if (argc != 12)
+   if (argc != 10)
      return usage();
  
    // get pack filename and whether or not to shuffle
@@ -100,7 +100,7 @@
      cout << "Error opening " << argv[1] << endl;
      return EXIT_FAILURE;
    }
-   vector<string> player_names(argv + 4, argv + 12);
+   vector<string> player_names(argv + 4, argv + 10);
  
    // play a game
    Game game(pack_stream, shuffle, points_to_win, player_names);
@@ -148,7 +148,9 @@
    //int winners = score[0] > score[1] ? 0 : 1;
    //SPEC: which order to print names in a partnership?
    //print_partnership(winners);
-   cout << " win!\n";
+    cout << "Game over\n";
+   for (int i=0; i<NUM_PLAYERS; ++i)
+     cout << *players[i] << " has " << scores[i] << " points\n";
  
    for (int i=0; i<NUM_PLAYERS; ++i) {
      delete players[i];
@@ -235,9 +237,7 @@
  
  void Game::play_hand(Player *dealer) {
    shuffle_pack();
-   deal(dealer,1//round 1
-    );
- 
+   deal(dealer,1);
    // Make trump, remembering make and trump suit for this round
    Suit trump;
    //Player *maker;
@@ -295,17 +295,26 @@
      cout << endl;
    }
    // announce tricks
-   
+   // the dealer should have quota of 2, and the maker should have 5, and the third player has quota of 3
+   int required_quotas[NUM_PLAYERS] = {2,5,3};
+   int dealer_index = Player_index(dealer);
    for(auto p:players)
    {
       int player_index = Player_index(p);
       cout << *p << " has " << tricks_taken[player_index] << " tricks\n";
-      scores[player_index] += tricks_taken[player_index];
+      if (required_quotas[(player_index+dealer_index) % NUM_PLAYERS] == 5)
+      {
+        scores[player_index] += tricks_taken[player_index]<5?0:2+tricks_taken[player_index]-5;
+      }
+      else
+      {
+        int quota =required_quotas[(player_index+dealer_index) % NUM_PLAYERS];
+        scores[player_index] += tricks_taken[player_index]<=quota?0:tricks_taken[player_index]-quota;
+      }
    }
    // set quotas
-   // the dealer should have quota of 2, and the maker should have 5, and the third player has quota of 3
-   int required_quotas[NUM_PLAYERS] = {2,5,3};
-   int dealer_index = Player_index(dealer);
+   
+   
     for(int i=0; i<NUM_PLAYERS; i++)
     {
         quota[i] = tricks_taken[i] - required_quotas[(i+dealer_index) % NUM_PLAYERS];
