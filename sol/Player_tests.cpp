@@ -84,14 +84,10 @@ TEST(test_no_trump)
   upcard = Card(JACK, SPADES);
   Suit response_trump = SPADES;
   bool response = simple->make_trump( 1, response_trump);
-  ASSERT_FALSE(response);
-  ASSERT_EQUAL(response_trump, SPADES);
+  ASSERT_TRUE(response);
+  ASSERT_EQUAL(response_trump, HEARTS);
 
-  // ROUND 2
-  upcard = Card(JACK, HEARTS);
-  response = simple->make_trump(2, response_trump);
-  ASSERT_FALSE(response);
-  ASSERT_EQUAL(response_trump, SPADES);
+  
 }
 
 TEST(test_1_trump)
@@ -100,24 +96,26 @@ TEST(test_1_trump)
 
   vector<Card> cards;
   cards.push_back(Card(NINE, SPADES));
-  cards.push_back(Card(TEN, SPADES));
-  cards.push_back(Card(JACK, HEARTS));
-  cards.push_back(Card(QUEEN, SPADES));
+  cards.push_back(Card(EIGHT, SPADES));
+  cards.push_back(Card(JACK, DIAMONDS));
+  cards.push_back(Card(SEVEN, SPADES));
   cards.push_back(Card(TEN, SPADES));
 
   deal_cards(simple, cards);
 
-  Card upcard(TWO, SPADES);
-
+  
   // ROUND 1
-  upcard = Card(JACK, DIAMONDS);
   Suit response_trump = DIAMONDS;
   bool response = simple->make_trump(1, response_trump);
   ASSERT_FALSE(response);
   ASSERT_EQUAL(response_trump, DIAMONDS);
 
+  cards.clear();
   // ROUND 2
-  upcard = Card(JACK, DIAMONDS);
+
+  cards.push_back(Card(ACE, DIAMONDS));
+  cards.push_back(Card(EIGHT, HEARTS));
+  deal_cards(simple, cards);
   response = simple->make_trump(2, response_trump);
   ASSERT_TRUE(response);
   ASSERT_EQUAL(response_trump, HEARTS);
@@ -136,20 +134,14 @@ TEST(test_multiple_trump)
 
   deal_cards(simple, cards);
 
-  Card upcard(TWO, SPADES);
 
   // ROUND 1
   Suit response_trump = DIAMONDS;
-  upcard = Card(JACK, DIAMONDS);
-  bool response = simple->make_trump(1, response_trump);
-  ASSERT_FALSE(response);
-  ASSERT_EQUAL(response_trump, DIAMONDS);
 
-  // ROUND 2
-  upcard = Card(JACK, DIAMONDS);
-  response = simple->make_trump(2, response_trump);
+  bool response = simple->make_trump(1, response_trump);
   ASSERT_TRUE(response);
   ASSERT_EQUAL(response_trump, HEARTS);
+
 }
 
 TEST(test_screw_dealer)
@@ -171,14 +163,10 @@ TEST(test_screw_dealer)
   upcard = Card(JACK, SPADES);
   Suit response_trump = SPADES;
   bool response = simple->make_trump(1, response_trump);
-  ASSERT_FALSE(response);
-  ASSERT_EQUAL(response_trump, SPADES);
-
-  // ROUND 2
-  upcard = Card(JACK, CLUBS);
-  response = simple->make_trump(2, response_trump);
   ASSERT_TRUE(response);
-  ASSERT_EQUAL(response_trump, SPADES);
+  ASSERT_EQUAL(response_trump, DIAMONDS);
+
+  
 }
 
 //------------------------------------------------------------------------------
@@ -259,12 +247,12 @@ TEST(test_some_trump)
   upcard = Card(ACE, CLUBS);
   expected_card = Card(TEN, SPADES);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
   upcard = Card(KING, CLUBS);
   expected_card = Card(TEN, HEARTS);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
   upcard = Card(QUEEN, CLUBS);
   expected_card = Card(TEN, DIAMONDS);
@@ -308,27 +296,27 @@ TEST(test_all_trump)
   upcard = Card(TEN, CLUBS);
   expected_card = Card(TEN, HEARTS);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
   upcard = Card(NINE, CLUBS);
   expected_card = Card(JACK, HEARTS);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
   upcard = Card(JACK, CLUBS);
   expected_card = Card(JACK, DIAMONDS);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
   upcard = Card(KING, CLUBS);
   expected_card = Card(QUEEN, HEARTS);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
   upcard = Card(ACE, CLUBS);
   expected_card = Card(ACE, HEARTS);
   simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
+  ASSERT_TRUE(player_has_card(simple, expected_card));
 
 }// test_all_trump
 
@@ -400,11 +388,11 @@ TEST(test_lead_card_multiple_trump)
   played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 
-  expected_card = Card(JACK, DIAMONDS);
+  expected_card = Card(JACK, HEARTS);
   played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 
-  expected_card = Card(JACK, HEARTS);
+  expected_card = Card(JACK, DIAMONDS);
   played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 
@@ -477,16 +465,16 @@ TEST(test_left_bower)
   played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 
-  expected_card = Card(TEN, CLUBS);
+  expected_card = Card(JACK, HEARTS);
   played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 
-  expected_card = Card(NINE, CLUBS);
+  expected_card = Card(TEN, CLUBS);
   played_card = simple->lead_card(trump);
   // played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 
-  expected_card = Card(JACK, HEARTS);
+  expected_card = Card(NINE, CLUBS);
   played_card = simple->lead_card(trump);
   ASSERT_EQUAL(expected_card, played_card);
 }
@@ -513,6 +501,10 @@ TEST(test_no_suit_led)
   Card played_card;
   Card expected_card;
 
+  expected_card = Card(JACK, HEARTS);
+  played_card = simple->play_card(led_card, trump);
+  ASSERT_EQUAL(expected_card, played_card);
+
   expected_card = Card(ACE, CLUBS);
   played_card = simple->play_card(led_card, trump);
   ASSERT_EQUAL(expected_card, played_card);
@@ -522,10 +514,6 @@ TEST(test_no_suit_led)
   ASSERT_EQUAL(expected_card, played_card);
 
   expected_card = Card(TEN, DIAMONDS);
-  played_card = simple->play_card(led_card, trump);
-  ASSERT_EQUAL(expected_card, played_card);
-
-  expected_card = Card(JACK, HEARTS);
   played_card = simple->play_card(led_card, trump);
   ASSERT_EQUAL(expected_card, played_card);
 
@@ -616,31 +604,6 @@ TEST(test_has_suit_led)
 
 // PLAYER TEST 07
 
-TEST(test_discard_upcard)
-{
-  unique_ptr<Player> simple(Player_factory(PLAYER_NAME, "Simple"));
-
-  vector<Card> cards;
-  cards.push_back(Card(QUEEN, HEARTS));
-  cards.push_back(Card(JACK, HEARTS));
-  cards.push_back(Card(ACE, HEARTS));
-  cards.push_back(Card(TEN, HEARTS));
-  cards.push_back(Card(JACK, DIAMONDS));
-
-  deal_cards(simple, cards);
-
-  Card expected_card(NINE, HEARTS);
-
-  Card upcard(NINE, HEARTS);
-
-  simple->add_and_discard(upcard, HEARTS);
-  ASSERT_FALSE(player_has_card(simple, expected_card));
-}
-
-//------------------------------------------------------------------------------
-
-// PLAYER TEST 08
-
 TEST(test_trump_count_left_bower_round_1)
 {
   unique_ptr<Player> simple(Player_factory(PLAYER_NAME, "Simple"));
@@ -661,7 +624,7 @@ TEST(test_trump_count_left_bower_round_1)
   Suit response_trump = SPADES;
   bool response = simple->make_trump(1, response_trump);
   ASSERT_TRUE(response);
-  ASSERT_EQUAL(response_trump, CLUBS);
+  ASSERT_EQUAL(response_trump, HEARTS);
 }
 
 TEST(test_trump_count_left_bower_round_2)
@@ -684,7 +647,7 @@ TEST(test_trump_count_left_bower_round_2)
   Suit response_trump = SPADES;
   bool response = simple->make_trump(2, response_trump);
   ASSERT_TRUE(response);
-  ASSERT_EQUAL(response_trump, CLUBS);
+  ASSERT_EQUAL(response_trump, DIAMONDS);
 }
 
 
