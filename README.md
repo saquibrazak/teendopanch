@@ -12,6 +12,7 @@ The learning goals of this project include Abstract Data Types in C++, Derived C
 When you're done, you'll have a program that simulates a game of Teen Do Panch, supporting a AI player and a Human player.
 ```console
 $ ./teendopanch.exe pack.in shuffle 10 A Simple B Simple C Simple
+./teendopanch.exe pack.in shuffle 10 A Simple B Simple C Simple 
 Hand 1
 A deals 5 cards
 B orders up Spades
