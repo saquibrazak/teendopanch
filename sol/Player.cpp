@@ -29,7 +29,7 @@ class Simple : public Player {
 
   //REQUIRES player has less than MAX_HAND_SIZE cards
   //EFFECTS  adds Card c to Player's hand
-  virtual void add_card(const Card &c);
+  virtual void add_card(const Card &c, bool end);
 
   //REQUIRES round is 1 or 2
   //MODIFIES order_up_suit
@@ -96,9 +96,17 @@ const std::string & Simple::get_name() const {
   return name;
 }
 
-void Simple::add_card(const Card &c) {
+void Simple::add_card(const Card &c, bool end=true) {
   assert(hand.size() < Player::MAX_HAND_SIZE);
-  hand.push_back(c);
+  if (end)
+    {
+      hand.push_back(c);
+    }
+    else
+    {
+      hand.insert(hand.begin(), c);
+    } 
+
 }
 
 bool Simple::make_trump(int round, Suit &order_up_suit) const {
@@ -265,9 +273,17 @@ class Human : public Player {
 
   //REQUIRES player has less than MAX_HAND_SIZE cards
   //EFFECTS  adds Card c to Player's hand
-  virtual void add_card(const Card &c) {
+  virtual void add_card(const Card &c, bool end = true) {
+   
     assert(hand.size() < Player::MAX_HAND_SIZE);
-    hand.push_back(c);
+    if (end)
+    {
+      hand.push_back(c);
+    }
+    else
+    {
+      hand.insert(hand.begin(), c);
+    } 
     std::sort(hand.begin(), hand.end());
   }
 

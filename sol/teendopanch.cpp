@@ -341,7 +341,7 @@
             // take card from player[p] and add to player[i]
             Card c = players[p]->remove_card();
             c = players[i]->add_and_discard(c,trump);
-            players[p]->add_card(c);
+            players[p]->add_card(c,false);
             quota[i]--;
             quota[p]++; 
         }
