@@ -21,7 +21,7 @@ class Player {
 
   //REQUIRES player has less than MAX_HAND_SIZE cards
   //EFFECTS  adds Card c to Player's hand
-  virtual void add_card(const Card &c) = 0;
+  virtual void add_card(const Card &c, bool end = true) = 0;
 
   //REQUIRES round is 1 or 2
   //MODIFIES order_up_suit
@@ -50,6 +50,7 @@ class Player {
   //  The card is removed from the player's hand.
   virtual Card remove_card() = 0;
 
+  virtual void print_hand() const =0;
 
   // Maximum number of cards in a player's hand
   static const int MAX_HAND_SIZE = 10;
